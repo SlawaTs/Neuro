@@ -95,7 +95,7 @@ export default {
 .column-content {
   display: flex;
   justify-content: space-between;
-
+  align-items: center
 }
 
 .column-content__item {

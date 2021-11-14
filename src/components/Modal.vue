@@ -4,21 +4,29 @@
     <a-modal v-model:visible="visible" title="Добовление товара" @ok="addProduct" @cancel="mashing">
 
       <a-select
+          class="modal-row__item"
           ref="select"
           v-model:value="type"
-          style="width: 100%"
+          style="width: 100%; margin-bottom: 10px"
+
       >
         <a-select-option value="take_off">take_off</a-select-option>
         <a-select-option value="put_on">put_on</a-select-option>
       </a-select>
-      <a-input v-model:value="productName" placeholder="Название продукта"/>
-      <a-input v-model:value="productCount" placeholder="количество" type="number"/>
+      <a-input v-model:value="productName"
+               placeholder="Название продукта"
+               class="modal-row__item"
+               style="margin-bottom: 10px"/>
+      <a-input v-model:value="productCount"
+               placeholder="количество"
+               type="number"
+      />
     </a-modal>
   </div>
 </template>
 <script>
 import {mapActions, mapGetters} from "vuex";
-import { message } from 'ant-design-vue'
+import {message} from 'ant-design-vue'
 
 export default {
   props: {
@@ -50,8 +58,7 @@ export default {
         this.addProductInSession(product);
         this.mashing();
         message.success('Продукт добавлен')
-      }
-      else message.error('Заполните все поля')
+      } else message.error('Заполните все поля')
     },
     mashing() {
       this.type = '';
@@ -69,5 +76,9 @@ export default {
   border-radius: 8px;
   margin-left: 10px;
   padding: 5px 20px;
+}
+
+.modal-row__item {
+  margin: 10px;
 }
 </style>

@@ -6,8 +6,8 @@
         <UserOutlined class="cart__icon"/>
       </div>
       <div>
-        <div>34829</div>
         <div>{{ session }}</div>
+        <div>{{ openSession(session) }}-{{ exitSession(session) }}</div>
       </div>
       <div>
         <div>34829</div>
@@ -63,6 +63,7 @@ import AppProduct from "./Product"
 import AppModal from "./Modal"
 import {EditOutlined, MoreOutlined, UserOutlined, InteractionTwoTone, CheckOutlined} from "@ant-design/icons-vue";
 import {mapGetters} from 'vuex'
+import moment from "moment";
 
 export default {
   props: {
@@ -90,11 +91,12 @@ export default {
   methods: {
     openSession(id) {
       let timeOpen = this.trunstile(id).find(pr => pr.type === "open")
-      return timeOpen.timestamp
+      return moment(timeOpen.timestamp).format('MMMM Do YYYY, h:mm:ss a');
+
     },
     exitSession(id) {
       let timeExit = this.trunstile(id).find(pr => pr.type === "exit")
-      return timeExit.timestamp
+      return moment(timeExit.timestamp).format('MMMM Do YYYY, h:mm:ss a')
     },
     sendSession() {
       this.activated = false;
@@ -109,7 +111,10 @@ export default {
 <style scoped lang="scss">
 
 .cart-session {
-  max-width: 700px;
+  max-width: 900px;
+  border-radius: 5px;
+  border: #881EA8 solid  3px;
+  margin: 5px;
 }
 
 .cart-session__row {
