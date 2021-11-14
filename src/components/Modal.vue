@@ -4,7 +4,6 @@
     <a-modal v-model:visible="visible" title="Добовление товара" @ok="addProduct" @cancel="mashing">
 
       <a-select
-          class="modal-row__item"
           ref="select"
           v-model:value="type"
           style="width: 100%; margin-bottom: 10px"
@@ -76,9 +75,5 @@ export default {
   border-radius: 8px;
   margin-left: 10px;
   padding: 5px 20px;
-}
-
-.modal-row__item {
-  margin: 10px;
 }
 </style>
